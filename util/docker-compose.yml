@@ -1,5 +1,15 @@
 version: "3.9"
 services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    ports:
+      - "1000:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    restart: always
+
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
@@ -15,3 +25,6 @@ services:
       - './etc-pihole:/etc/pihole'
       - './etc-dnsmasq.d:/etc/dnsmasq.d'
     restart: unless-stopped
+
+volumes:
+  portainer_data:
