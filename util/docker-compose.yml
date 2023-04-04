@@ -22,7 +22,7 @@ services:
     environment:
       - TZ=Europe/Madrid
     volumes:
-      - ~/.config/heimdall:/config
+      - ${HOME}/.config/heimdall:/config
     ports:
       - 5000:80
     restart: unless-stopped
@@ -35,7 +35,7 @@ services:
       - PGID=1000
       - TZ=Europe/Madrid
     volumes:
-      - ~/.config/qbittorrent:/config
+      - ${HOME}/.config/qbittorrent:/config
       - /media/qbittorrent:/downloadsz`
     ports:
       - 6000:8080
