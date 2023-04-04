@@ -16,7 +16,7 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "2000:80/tcp"
+      - "4000:80/tcp"
     network_mode: bridge
     environment:
       TZ: 'Europe/Madrid'
@@ -32,7 +32,7 @@ services:
     environment:
       - TZ=Europe/Madrid
     ports:
-      - 80:80
+      - 5000:80
       - 443:443
     restart: unless-stopped
 
