@@ -34,3 +34,8 @@ networks:
   metrics:
     name: metrics
     driver: bridge
+
+volumes:
+  metrics:
+    name: metrics
+    driver: local
