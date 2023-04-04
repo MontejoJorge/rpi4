@@ -33,7 +33,22 @@ services:
       - TZ=Europe/Madrid
     ports:
       - 5000:80
-      - 443:443
+    restart: unless-stopped
+  
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - ~/.config:/config
+      - /media/qbittorrent:/downloadsz`
+    ports:
+      - 6000:8080
+      - 6881:6881
+      - 6881:6881/udp
     restart: unless-stopped
 
 volumes:
