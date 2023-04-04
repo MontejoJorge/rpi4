@@ -7,8 +7,5 @@ services:
       - "1000:9443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+      - /var/config/portainer:/data
     restart: always
-
-volumes:
-  portainer_data:
