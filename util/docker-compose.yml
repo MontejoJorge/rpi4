@@ -12,8 +12,8 @@ services:
       TZ: 'Europe/Madrid'
       WEBPASSWORD: 'Jm12345'
     volumes:
-      - './etc-pihole:/etc/pihole'
-      - './etc-dnsmasq.d:/etc/dnsmasq.d'
+      - '/var/config/pihole/etc:/etc/pihole'
+      - '/var/config/pihole/dnsmasq.d:/etc/dnsmasq.d'
     restart: unless-stopped
 
   heimdall:
@@ -42,4 +42,18 @@ services:
       - 8080:8080
       - 6881:6881
       - 6881:6881/udp
+    restart: unless-stopped
+
+  duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    container_name: duckdns
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - SUBDOMAINS=keppler
+      - TOKEN=${DUCKDNS_TOKEN}
+      - LOG_FILE=false
+    volumes:
+      - /var/config/duckdns:/config
     restart: unless-stopped
