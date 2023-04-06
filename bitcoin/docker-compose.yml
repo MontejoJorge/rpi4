@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  bitcoind:
+    build: 
+      context: .
+      dockerfile: bitcoind.dockerfile
+    container_name: bitcoind
+    restart: always
+    ports:
+      - "8332:8332"
+      - "8333:8333"
+    volumes:
+      - /var/config/bitcoin:/root/.bitcoin
