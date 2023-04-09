@@ -12,5 +12,6 @@ services:
       - VERSION=docker
     volumes:
       - /var/lib/plex:/config
-      - /media/plex/series:/tv
-      - /media/plex/movies:/movies
+      - /mnt/SSD/media/plex/series:/tv
+      - /mnt/SSD/media/plex/movies:/movies
+      - /mnt/SSD/media:/media
