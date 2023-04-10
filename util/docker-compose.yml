@@ -12,8 +12,8 @@ services:
       TZ: 'Europe/Madrid'
       WEBPASSWORD: 'Jm12345'
     volumes:
-      - '/var/config/pihole/etc:/etc/pihole'
-      - '/var/config/pihole/dnsmasq.d:/etc/dnsmasq.d'
+      - '/home/jorge/.config/pihole/etc:/etc/pihole'
+      - '/home/jorge/.config/pihole/dnsmasq.d:/etc/dnsmasq.d'
     restart: unless-stopped
 
   heimdall:
@@ -22,7 +22,7 @@ services:
     environment:
       - TZ=Europe/Madrid
     volumes:
-      - /var/config/heimdall:/config
+      - /home/jorge/.config/heimdall:/config
     ports:
       - 5000:80
     restart: unless-stopped
@@ -36,7 +36,7 @@ services:
       - TZ=Europe/Madrid
       - WEBUI_PORT=8080
     volumes:
-      - /var/config/qbittorrent:/config
+      - /home/jorge/.config/qbittorrent:/config
       - /mnt/SSD/media:/downloads
     ports:
       - 8080:8080
@@ -55,5 +55,5 @@ services:
       - TOKEN=${DUCKDNS_TOKEN}
       - LOG_FILE=false
     volumes:
-      - /var/config/duckdns:/config
+      - /home/jorge/.config/duckdns:/config
     restart: unless-stopped

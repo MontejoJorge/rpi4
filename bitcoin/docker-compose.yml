@@ -6,8 +6,11 @@ services:
       dockerfile: bitcoind.dockerfile
     container_name: bitcoind
     restart: always
+    stop_grace_period: 15m
     ports:
       - "8332:8332"
       - "8333:8333"
+    environment:
+      - TZ=Madrid/Europe
     volumes:
-      - /var/config/bitcoin:/root/.bitcoin
+      - /home/jorge/.bitcoin:/root/.bitcoin
