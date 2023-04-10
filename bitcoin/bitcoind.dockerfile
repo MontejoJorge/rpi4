@@ -10,9 +10,11 @@ RUN apt-get update -y \
 RUN wget https://bitcoincore.org/bin/bitcoin-core-${BITCOIN_VERSION}/bitcoin-${BITCOIN_VERSION}-aarch64-linux-gnu.tar.gz
 
 RUN tar -xzf bitcoin-${BITCOIN_VERSION}-aarch64-linux-gnu.tar.gz \
-   && install -m 0755 -o root -g root -t /usr/local/bin bitcoin-${BITCOIN_VERSION}/bin/*
+   && install -m 0755 -o root -g root -t /usr/local/bin bitcoin-${BITCOIN_VERSION}/bin/* \
    && rm -rf bitcoin-${BITCOIN_VERSION} \
    && rm bitcoin-${BITCOIN_VERSION}-aarch64-linux-gnu.tar.gz
+
+STOPSIGNAL SIGINT
 
 EXPOSE 8332 8333
 
