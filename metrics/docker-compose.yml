@@ -15,7 +15,7 @@ services:
     container_name: prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
-      - /home/jorge/.config/prometheus:/prometheus
+      - metrics:/prometheus
     restart: unless-stopped
     ports:
       - 9090:9090
