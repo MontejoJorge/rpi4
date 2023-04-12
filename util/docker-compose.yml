@@ -57,3 +57,13 @@ services:
     volumes:
       - /home/jorge/.config/duckdns:/config
     restart: unless-stopped
+
+  tor:
+    image: dperson/torproxy
+    container_name: tor
+    ports:
+      - "8118:8118"
+      - "9050:9050"
+    environment:
+      - TZ=Europe/Madrid
+    restart: unless-stopped
