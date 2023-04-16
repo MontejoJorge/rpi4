@@ -1993,6 +1993,21 @@
           "range": true,
           "refId": "B",
           "step": 240
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "100 - ((node_filesystem_avail_bytes{instance=\"$node\",job=\"$job\", mountpoint=\"/mnt/SSD\"} * 100) / node_filesystem_size_bytes{instance=\"$node\",job=\"$job\", mountpoint=\"/mnt/SSD\"})",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "SSD",
+          "range": true,
+          "refId": "C"
         }
       ],
       "title": "Disk Space Used Basic",
@@ -22875,6 +22890,6 @@
   "timezone": "browser",
   "title": "System",
   "uid": "rYdddlPWk",
-  "version": 7,
+  "version": 2,
   "weekStart": ""
 }
