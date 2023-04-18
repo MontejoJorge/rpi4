@@ -1,23 +1,5 @@
 version: "3.9"
-services:
-  openvpn:
-    image: ghcr.io/linuxserver/openvpn-as
-    container_name: openvpn
-    cap_add:
-      - NET_ADMIN
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Madrid
-      - INTERFACE=eth0
-    volumes:
-      - /home/jorge/.config/openvpn:/config
-    ports:
-      - 943:943
-      - 9443:9443
-      - 1194:1194/udp
-    restart: unless-stopped
-  
+services:  
   duckdns:
     image: lscr.io/linuxserver/duckdns:latest
     container_name: duckdns
