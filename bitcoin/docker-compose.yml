@@ -23,8 +23,8 @@ services:
     stop_grace_period: 15m
     ports:
       - "50001:50001"
-    environment:
-      - TZ=Europe/Madrid
+      - "4224:4224"
     volumes:
+      - ./electrs.toml:/etc/electrs/config.toml
       - /home/jorge/.bitcoin:/data/.bitcoin:ro
       - /home/jorge/.electrs:/data

@@ -7,10 +7,12 @@ ARG VERSION
 WORKDIR /build
 
 
-RUN apt-get update
-RUN apt-get install -y git clang cmake libsnappy-dev
+RUN apt-get update \
+   && apt-get install -y git curl gpg clang cmake libsnappy-dev
 
-RUN git clone --branch $VERSION https://github.com/romanz/electrs .
+RUN git clone --branch $VERSION https://github.com/romanz/electrs . \
+   && curl https://romanzey.de/pgp.txt | gpg --import \
+   && git verify-tag $VERSION
 
 # cargo under QEMU building for ARM can consumes 10s of GBs of RAM...
 # Solution: https://users.rust-lang.org/t/cargo-uses-too-much-memory-being-run-in-qemu/76531/2
@@ -22,7 +24,6 @@ FROM debian:buster-slim
 
 COPY --from=builder /usr/local/cargo/bin/electrs /bin/electrs
 
-COPY ./electrs.toml /etc/electrs/config.toml
 # Electrum RPC
 EXPOSE 50001
 
