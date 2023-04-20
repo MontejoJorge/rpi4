@@ -10,9 +10,8 @@ services:
     ports:
       - "8332:8332"
       - "8333:8333"
-    environment:
-      - TZ=Europe/Madrid
     volumes:
+      - ./bitcoin.conf:/root/.bitcoin/bitcoin.conf
       - /home/jorge/.bitcoin:/root/.bitcoin
 
   electrs:
