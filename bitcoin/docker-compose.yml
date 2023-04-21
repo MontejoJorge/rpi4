@@ -10,8 +10,19 @@ services:
     ports:
       - "8332:8332"
       - "8333:8333"
+    command:
+      -txindex=1
+      -blockfilterindex=1
+      -peerblockfilters=1
+      -peerbloomfilters=1
+      -listen=1
+      -port=8333
+      -maxconnections=400
+      -rpcbind=0.0.0.0
+      -rpcport=8332
+      -rpcallowip=0.0.0.0/0
+      -rpcauth=${BTC_AUTH}
     volumes:
-      - ./bitcoin.conf:/root/.bitcoin/bitcoin.conf
       - /home/jorge/.bitcoin:/root/.bitcoin
 
   electrs:
@@ -24,7 +35,14 @@ services:
     ports:
       - "50001:50001"
       - "4224:4224"
+    environment:
+      - ELECTRS_COOKIE_FILE=/data/.bitcoin/.cookie
+      - ELECTRS_DAEMON_RPC_ADDR=bitcoind:8332
+      - ELECTRS_DAEMON_P2P_ADDR=bitcoind:8333
+      - ELECTRS_DB_DIR=/data
+      - ELECTRS_NETWORK=bitcoin
+      - ELECTRS_ELECTRUM_RPC_ADDR=0.0.0.0:50001
+      - ELECTRS_LOG_FILTERS=INFO
     volumes:
-      - ./electrs.toml:/etc/electrs/config.toml
       - /home/jorge/.bitcoin:/data/.bitcoin:ro
       - /home/jorge/.electrs:/data
