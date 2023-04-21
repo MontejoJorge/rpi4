@@ -21,7 +21,7 @@ services:
       -rpcbind=0.0.0.0
       -rpcport=8332
       -rpcallowip=0.0.0.0/0
-      -rpcauth=${BTC_AUTH}
+      -rpcauth=$${BTC_AUTH}
     volumes:
       - /home/jorge/.bitcoin:/root/.bitcoin
 
@@ -46,3 +46,18 @@ services:
     volumes:
       - /home/jorge/.bitcoin:/data/.bitcoin:ro
       - /home/jorge/.electrs:/data
+
+  explorer:
+    build: 
+      context: .
+      dockerfile: explorer.dockerfile
+    container_name: explorer
+    restart: always
+    ports:
+      - "3002:3002"
+    environment:
+      - BTCEXP_HOST=0.0.0.0
+      - BTCEXP_BITCOIND_HOST=bitcoind
+      - BTCEXP_BITCOIND_COOKIE=/data/.bitcoin/.cookie
+    volumes:
+      - /home/jorge/.bitcoin:/data/.bitcoin:ro
