@@ -30,14 +30,12 @@ services:
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
-    command:
-      --web.listen-address="0.0.0.0:1002" 
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - metrics:/prometheus
     restart: unless-stopped
     ports:
-      - 1002:1002
+      - 9090:9090
 
   grafana:
     image: grafana/grafana-oss:latest
