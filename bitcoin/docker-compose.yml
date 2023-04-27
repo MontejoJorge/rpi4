@@ -21,6 +21,7 @@ services:
       -rpcbind=0.0.0.0
       -rpcport=8332
       -rpcallowip=0.0.0.0/0
+      -rpcauth=jefe:a73a0f4133c04a64070b6befabe428ae$18650836a2dd47cd5be4e53ab2fc8044cc5fdd84fde961ae7fbf230487ac29ac
     volumes:
       - /home/jorge/.bitcoin:/root/.bitcoin
 
