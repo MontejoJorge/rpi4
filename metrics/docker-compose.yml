@@ -13,6 +13,8 @@ services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.47.0
     container_name: cadvisor
+    command:
+    - '-port=1001'
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
@@ -20,7 +22,7 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
     ports:
-      - 8081:8080
+      - 1001:1001
     privileged: true
     devices:
       - /dev/kmsg
@@ -33,7 +35,7 @@ services:
       - metrics:/prometheus
     restart: unless-stopped
     ports:
-      - 9090:9090
+      - 1002:9090
 
   grafana:
     image: grafana/grafana-oss:latest
@@ -44,12 +46,7 @@ services:
       - ./dashboards/dashboard.yml:/etc/grafana/provisioning/dashboards/main.yml
       - ./dashboards:/var/lib/grafana/dashboards
     ports:
-      - 3000:3000
-
-networks:
-  metrics:
-    name: metrics
-    driver: bridge
+      - 1003:3000
 
 volumes:
   metrics:

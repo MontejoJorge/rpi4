@@ -33,4 +33,4 @@ scrape_configs:
   enable_http2: true
   static_configs:
   - targets:
-    - cadvisor:8081
+    - cadvisor:1001

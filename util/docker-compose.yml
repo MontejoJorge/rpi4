@@ -6,7 +6,7 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "4000:80/tcp"
+      - "1004:80/tcp"
     network_mode: bridge
     environment:
       TZ: 'Europe/Madrid'
@@ -24,7 +24,7 @@ services:
     volumes:
       - /home/jorge/.config/heimdall:/config
     ports:
-      - 5000:80
+      - 1005:80
     restart: unless-stopped
   
   qbittorrent:
@@ -34,12 +34,12 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Madrid
-      - WEBUI_PORT=8080
+      - WEBUI_PORT=1006
     volumes:
       - /home/jorge/.config/qbittorrent:/config
       - /mnt/SSD/media:/downloads
     ports:
-      - 8080:8080
+      - 1006:1006
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
