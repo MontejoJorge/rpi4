@@ -15,6 +15,9 @@ services:
     container_name: cadvisor
     command:
       -port=1001
+      -docker_only=true
+      -housekeeping_interval=15s
+      -disable_metrics=percpu,sched,tcp,udp,disk,diskIO,accelerator,hugetlb,referenced_memory,cpu_topology,resctrl
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
