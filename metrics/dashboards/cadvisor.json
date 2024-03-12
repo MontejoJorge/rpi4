@@ -149,10 +149,12 @@
                   "type": "prometheus",
                   "uid": "PBFA97CFB590B2093"
                },
-               "expr": "sum(rate(container_cpu_usage_seconds_total{instance=~\"$host\",name=~\"$container\",name=~\".+\"}[5m])) by (name) *100",
+               "editorMode": "code",
+               "expr": "sum(rate(container_cpu_usage_seconds_total{instance=~\"$host\",name=~\"$container\",name=~\".+\"}[2m])) by (name) *100",
                "hide": false,
                "interval": "",
                "legendFormat": "{{name}}",
+               "range": true,
                "refId": "A"
             }
          ],
@@ -778,7 +780,7 @@
          "type": "table"
       }
    ],
-   "refresh": "10s",
+   "refresh": "15s",
    "revision": 1,
    "schemaVersion": 38,
    "style": "dark",
