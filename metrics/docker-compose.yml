@@ -17,7 +17,7 @@ services:
       -port=1001
       -docker_only=true
       -housekeeping_interval=15s
-      -enable_metrics=container_cpu_usage_seconds_total,container_memory_rss,container_memory_cache,container_network_receive_bytes_total,container_network_transmit_bytes_total,container_start_time_seconds
+      -enable_metrics=cpu,cpuLoad,memory,network
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
