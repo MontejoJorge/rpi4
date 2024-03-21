@@ -29,6 +29,7 @@ services:
     privileged: true
     healthcheck:
       disable: true
+    restart: unless-stopped
     devices:
       - /dev/kmsg
 
