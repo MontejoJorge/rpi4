@@ -27,6 +27,8 @@ services:
     ports:
       - 1001:1001
     privileged: true
+    healthcheck:
+      disable: true
     devices:
       - /dev/kmsg
 
