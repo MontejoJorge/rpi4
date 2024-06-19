@@ -9,14 +9,14 @@ services:
     restart: unless-stopped
     volumes:
       - '/:/host:ro,rslave'
-    
+ 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.47.0
     container_name: cadvisor
     command:
       -port=1001
       -docker_only=true
-      -housekeeping_interval=15s
+      -housekeeping_interval=30s
       -enable_metrics=cpu,cpuLoad,memory,network
     volumes:
       - /:/rootfs:ro
