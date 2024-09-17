@@ -19,8 +19,8 @@ services:
       - '--allow_dynamic_housekeeping=false'
       - '--docker_only=true'
       - '--housekeeping_interval=15s'
-      - '--disable_metrics=advtcp,app,cpu_topology,cpuset,disk,diskIO,hugetlb,memory_numa,oom_event,percpu,perf_event,process,referenced_memory,resctrl,sched,tcp,udp'
-      
+      - '--enable_metrics=cpu,memory,network,diskIO'
+      #- '--disable_metrics=advtcp,app,cpu_topology,cpuset,disk,hugetlb,memory_numa,oom_event,percpu,perf_event,process,referenced_memory,resctrl,sched,tcp,udp'
     volumes:
       - /:/rootfs:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
