@@ -468,7 +468,7 @@
                }
              ]
            },
-           "unit": "bytes"
+           "unit": "Bps"
          },
          "overrides": []
        },
@@ -505,7 +505,7 @@
            },
            "editorMode": "code",
            "exemplar": false,
-           "expr": "sum(rate(container_fs_writes_bytes_total{instance=~\"$host\",name=~\"$container\",name=~\".+\"}[1m])) by (name)",
+           "expr": "irate(container_fs_writes_bytes_total{instance=~\"$host\",name=~\"$container\",name=~\".+\"}[$__rate_interval])",
            "hide": false,
            "instant": false,
            "interval": "",
@@ -572,7 +572,7 @@
                }
              ]
            },
-           "unit": "bytes"
+           "unit": "Bps"
          },
          "overrides": []
        },
@@ -609,7 +609,7 @@
            },
            "editorMode": "code",
            "exemplar": false,
-           "expr": "sum(rate(container_fs_reads_bytes_total{instance=~\"$host\",name=~\"$container\",name=~\".+\"}[1m])) by (name)",
+           "expr": "irate(container_fs_reads_bytes_total{instance=~\"$host\",name=~\"$container\",name=~\".+\"}[$__rate_interval])",
            "hide": false,
            "instant": false,
            "interval": "",
@@ -1109,6 +1109,6 @@
    "timezone": "",
    "title": "Cadvisor",
    "uid": "pMEd7m0Mz",
-   "version": 4,
+   "version": 6,
    "weekStart": ""
  }
